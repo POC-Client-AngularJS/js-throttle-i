@@ -61,9 +61,9 @@ function throttle_underscore(func, wait, options) {
 const throttle_advanced = (callback, delay) => {
   /*
    * Create a closure around these variables.
-   * They will be shared among all events handled by 
+   * They will be shared among all events handled by
    * the throttle.
-   * 
+   *
    * The variable used to indicate a running throttle
    * created by setTimeout.
    */
@@ -99,7 +99,7 @@ const throttle_advanced = (callback, delay) => {
       /*
        * Create a new throttle by setting a timeout to
        * prevent handling events during the delay.
-       * Once the timeout finishes, we execute our 
+       * Once the timeout finishes, we execute our
        * throttle if we have a stored event.
        */
       throttleTimeout = setTimeout(() => {
