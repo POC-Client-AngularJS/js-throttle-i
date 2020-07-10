@@ -75,25 +75,30 @@ const throttle_advanced = (callback, delay) => {
    */
   const throttledEventHandler = event => {
     /*
-     * Update the stored event every iteration.
+     * Variable containing event to handle with the
+     * throttled "callback".
+     * Update the stored event on every iteration.
      */
     storedEvent = event;
     /*
-     * We execute the callback with our event
-     * if our throttle is not active
+     * Check for the throttle (i.e. throttleTimeout).
+     * If it is not active, immediately handle the
+     * event with "callback" function.
      */
     const shouldHandleEvent = !throttleTimeout;
     /*
-     * If there isn't a throttle active, we execute the
-     * callback and create a new throttle.
+     * If throttle (i.e. throttleTimeout) is not active,
+     * execute the "callback" and create a new throttle .
      */
     if (shouldHandleEvent) {
       /*
-       * Handle our event.
+       * Handle event by executing "callback" with the
+       * most recent event stored (using storedEvent).
        */
       callback(storedEvent);
       /*
-       * Since we have used our stored event, we null it out.
+       * Since, the most recent event stored is handled,
+       * "null" it out.
        */
       storedEvent = null;
       /*
@@ -121,7 +126,7 @@ const throttle_advanced = (callback, delay) => {
            * 1. This recursive call will execute "callback"
            * immediately since throttleTimeout is now null.
            * 2. It will restart the throttle timer, allowing
-           * us to repeat the throttle process
+           * us to repeat the throttle process.
            */
           throttledEventHandler(storedEvent);
         }
